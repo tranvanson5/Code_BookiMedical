@@ -1,0 +1,23 @@
+<div class="input-group">
+    <input
+        class="form-control"
+        placeholder="dd/MM/yyyy"
+        name="dp"
+        ngbDatepicker
+        #d="ngbDatepicker"
+        
+        [minDate]="{year: 1900, month: 1, day: 1}"
+        [(ngModel)]="model"
+        [class.border-danger]="!isValid"
+        [class.bg-white]="!disabled"
+        [readOnly]="true"
+        
+        (dateSelect)="ngOnChangeValue($event)"
+        (blur)="ngOnBlurInput()"
+    />
+    <button 
+        class="btn btn-outline-secondary bi bi-calendar3" 
+        (click)="disabled || d.toggle()" type="button"
+        [class.border-danger]="!isValid"    
+    ></button>    
+</div>

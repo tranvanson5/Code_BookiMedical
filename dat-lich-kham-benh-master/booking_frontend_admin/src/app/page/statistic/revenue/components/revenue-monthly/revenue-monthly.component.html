@@ -1,0 +1,32 @@
+<div>
+    <app-form-search-statistic
+        (statistic)="onChangeYear($event)"
+    ></app-form-search-statistic>
+
+    <div *ngIf="monthly$ | async as result" class="w-100" style="height: 360px;">
+        <app-bar-chart
+            [single]="result"
+        ></app-bar-chart>
+    </div>
+
+    <ag-grid-angular
+        *ngIf="rowData"
+        class="ag-theme-alpine"
+        style="height: 500px;"
+        [columnDefs]="columnDef"
+        [headerHeight]="65"
+        [rowHeight]="56"
+        [tooltipShowDelay]="0"
+
+        [autoGroupColumnDef]="autoGroupColumnDef"
+        [rowModelType]="'serverSide'"
+        [treeData]="true"
+        [animateRows]="true"
+        [isServerSideGroupOpenByDefault]="isServerSideGroupOpenByDefault"
+        [isServerSideGroup]="isServerSideGroup"
+        [getServerSideGroupKey]="getServerSideGroupKey"
+
+        (gridSizeChanged)="gridSizeChanged($event)"
+        (gridReady)="onGridReady($event)"
+    ></ag-grid-angular>
+</div>

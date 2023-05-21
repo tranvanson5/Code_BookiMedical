@@ -1,0 +1,28 @@
+<div>
+    <div class="title-container mb-3">
+        <span class="title">THỐNG KÊ DOANH THU</span>
+    </div>
+
+    <div class="d-flex flex-column gap-3">
+        <div>
+            <app-collapse [header]="'Tổng doanh thu hàng năm'" [defaultCollapse]="false" (open)="statisticRevenueYearly()">
+                <app-revenue
+                    *ngIf="revenue$ | async as result"
+                    [result]="result"
+                ></app-revenue>
+            </app-collapse>
+        </div>
+    
+        <div>
+            <app-collapse [header]="'Doanh thu hàng tháng'" [defaultCollapse]="false">
+                <app-revenue-monthly></app-revenue-monthly>
+            </app-collapse>
+        </div>
+
+        <div>
+            <app-collapse [header]="'Top gói dịch vụ'" [defaultCollapse]="false">
+                <app-top-product></app-top-product>
+            </app-collapse>
+        </div>
+    </div>
+</div>

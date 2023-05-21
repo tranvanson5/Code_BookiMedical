@@ -1,0 +1,39 @@
+server:
+  host: http://localhost
+  port: 8080
+  port-fe: 4200
+  servlet:
+    context-path: /api/v1.0
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+  api-docs:
+    path: /api-docs
+
+spring:
+  application:
+    name: DAT-LICH-KHAM-BENH-BACKEND
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+    time-zone: UTC
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  jwt:
+    enabled: true
+    expire-time: 86400000
+    key-algorithm: RSA
+    key-size: 2048
+  resource:
+    base-path: 'C:\Users\drive\Desktop\dat-lich-kham-benh\dat-lich-kham-benh-master\booking-backend\src\main\resources\'
+otp:
+  length: 6
+  expire-time: 60000
+
+

@@ -1,0 +1,53 @@
+<div class="table-responsive">
+    <table class="table table-bordered m-0">
+        <thead>
+            <tr>
+                <th class="text-center py-3 px-4" style="min-width: 50px;"></th>
+                <th class="text-center py-3 px-4" style="min-width: 200px;">Hình Ảnh</th>
+                <th class="text-center py-3 px-4" style="min-width: 150px;">Tên sản phẩm</th>
+                <th class="text-right py-3 px-4" style="width: 100px;">Giá</th>
+                <th class="text-center py-3 px-4" style="width: 150px;">Số lượng</th>
+                <th class="text-right py-3 px-4" style="width: 120px;">Tổng tiền</th>
+                <th class="text-center align-middle py-3 px-0" style="width: 40px;">
+                    <a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart">
+                        <i class="ino ion-md-trash"></i>
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody *ngIf="cartResponse">
+            <tr *ngFor="let c of cartResponse.data">
+                <td class="p-4">
+                    <input type="checkbox" (change)="onSelectCart($event, c)" />
+                </td>
+                <td class="p-4">
+                    <div class="d-flex justify-content-center">
+                        <img 
+                            [src]="c.product.avatar | resource | safe:'resourceUrl'"
+                            [alt]="c.product.name"
+                            class="d-block ui-w-40 ui-bordered"
+                        >
+                    </div>
+                </td>
+                <td class="text-right font-weight-semibold align-middle p-4">{{ c.product.name }}</td>
+                <td class="text-right font-weight-semibold align-middle p-4">{{ c.product.price | currency:'VND' }}</td>
+                <td class="align-middle p-4">
+                    <input type="text" class="form-control text-center" [value]="c.quantity" (blur)="changeQuantity($event, c)" type="number">
+                </td>
+                <td class="text-right font-weight-semibold align-middle p-4">{{ (c.quantity * c.product.price) | currency:'VND' }}</td>
+                <td class="text-center align-middle px-0">
+                    <i class="fas fa-trash text-danger cursor-pointer" (click)="deleteCart(c)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <app-paging
+        *ngIf="cartResponse"
+        [dataLength]="cartResponse.data.length"
+        [page]="cartResponse.page"
+        [pageSize]="cartResponse.pageSize"
+        [total]="cartResponse.total"
+
+        (paginate)="paginate($event)"
+    ></app-paging>
+</div>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htt://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span>
+    <div th:replace="~{common/_header :: i}"></div>
+    <br /><br />
+    <div th:replace="${content}"></div>
+    <br />
+    <div th:replace="~{common/_footer :: span}"></div>
+</span>
+</body>
+</html>

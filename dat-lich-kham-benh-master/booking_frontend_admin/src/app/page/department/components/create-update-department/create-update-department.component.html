@@ -1,0 +1,110 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title *ngIf="!data">Thêm mới chi nhánh</h2>
+        <h2 mat-dialog-title *ngIf="data">Cập nhật chi nhánh</h2>
+        <span class="time-close" (click)="onClose(null)">&times;</span>
+    </div>
+
+    <form [formGroup]="formGroup" (submit)="submit()">
+
+        <mat-dialog-content class="d-flex flex-column gap-20">
+            <div>
+                <label class="required">Mã chi nhánh</label>
+                <input placeholder="Nhập mã chi nhánh" formControlName="code" class="form-control" />
+                <div *ngIf="(getControl.code.dirty || getControl.code.touched) && getControl.code.invalid">
+                    <div *ngIf="getControl.code.errors.required" class="error-validate">
+                        Mã chi nhánh không được trống
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label class="required">Địa chỉ chi nhánh</label>
+                <input placeholder="Nhập địa chỉ chi nhánh" formControlName="address" class="form-control" />
+                <div *ngIf="(getControl.address.dirty || getControl.address.touched) && getControl.address.invalid">
+                    <div *ngIf="getControl.address.errors.required" class="error-validate">
+                        Địa chỉ chi nhánh không được trống
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label class="required">Điện thoại</label>
+                <input placeholder="Nhập điện thoại" formControlName="telephone" class="form-control" />
+                <div *ngIf="(getControl.telephone.dirty || getControl.telephone.touched) && getControl.telephone.invalid">
+                    <div *ngIf="getControl.telephone.errors.required" class="error-validate">
+                        Điện thoại chi nhánh không được trống
+                    </div>
+                    <div *ngIf="getControl.telephone.errors.pattern" class="error-validate">
+                        Điện thoại chi nhánh không hợp lệ
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="required">Giờ mở của</label>
+                    <input [ngxMatTimepicker]="picker" [format]="24" placeholder="Nhập giờ mở của" formControlName="openTime" class="form-control time" readonly/>
+                    <ngx-mat-timepicker #picker></ngx-mat-timepicker>
+                    <div *ngIf="(getControl.openTime.dirty || getControl.openTime.touched) && getControl.openTime.invalid">
+                        <div *ngIf="getControl.openTime.errors.required" class="error-validate">
+                            Giờ mở của không được trống
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="required">Giờ đóng của</label>
+                    <input [ngxMatTimepicker]="picker2" [format]="24" placeholder="Nhập giờ đóng của" formControlName="closeTime" class="form-control time" readonly/>
+                    <ngx-mat-timepicker #picker2></ngx-mat-timepicker>
+                    <div *ngIf="(getControl.closeTime.dirty || getControl.closeTime.touched) && getControl.closeTime.invalid">
+                        <div *ngIf="getControl.closeTime.errors.required" class="error-validate">
+                            Giờ đóng của không được trống
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label class="required">Trạng thái</label>
+                <ng-select
+                    appendTo="body"
+                    [items]="status"
+                    [clearable]="false"
+                    [searchable]="false"
+                    bindValue="id"
+                    bindLabel="label"
+                    formControlName="status"
+                ></ng-select>
+                <div *ngIf="(getControl.status.dirty || getControl.status.touched) && getControl.status.invalid">
+                    <div *ngIf="getControl.status.errors.required" class="error-validate">
+                        Trạng thái không được trống
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label class="required">Quản lý</label>
+                <ng-select
+                    appendTo="body"
+                    [items]="managers$ | async"
+                    [clearable]="false"
+                    [searchable]="false"
+                    bindValue="id"
+                    bindLabel="username"
+                    formControlName="manager"
+                ></ng-select>
+                <div *ngIf="(getControl.manager.dirty || getControl.manager.touched) && getControl.manager.invalid">
+                    <div *ngIf="getControl.manager.errors.required" class="error-validate">
+                        Quản lý không được trống
+                    </div>
+                </div>
+            </div>
+        </mat-dialog-content>
+        
+        <mat-dialog-actions align="center">
+            <button type="button" class="btn-close mr-2" (click)="onClose(null)">Hủy bỏ</button>
+            <button class="btn-primary">Lưu lại</button>
+        </mat-dialog-actions>
+    </form>
+</div>

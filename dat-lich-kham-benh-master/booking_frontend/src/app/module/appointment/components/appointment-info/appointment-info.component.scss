@@ -1,0 +1,40 @@
+.container-PENDING:hover {
+    background-color: var(--bs-warning) !important;
+    color: white !important;
+}
+
+.container-CANCEL:hover {
+    background-color: var(--bs-gray) !important;
+    color: white !important;
+}
+
+.container-APPROVED:hover {
+    background-color: var(--bs-primary) !important;
+    color: white !important;
+}
+
+.container-DONE:hover {
+    background-color: var(--bs-success) !important;
+    color: white !important;
+}
+
+.label {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+}
+
+.fa-qrcode {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    font-size: 23px;
+    font-weight: bold;
+    cursor: pointer;
+}

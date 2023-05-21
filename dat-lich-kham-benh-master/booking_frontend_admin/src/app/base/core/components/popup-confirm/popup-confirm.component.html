@@ -1,0 +1,21 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title>{{data.title}}</h2>
+        <span class="time-close" (click)="doClose()">&times;</span>
+    </div>
+    <mat-dialog-content>
+        <ng-container *ngIf="!data.withReason">
+            {{data.message}}
+        </ng-container>
+        <ng-container *ngIf="data.withReason">
+            <div>
+                <label class="required">Lý do</label>
+                <input class="form-control" placeholder="Nhập lý do" [(ngModel)]="reason" />
+            </div>
+        </ng-container>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button class="btn-close mr-2" (click)="doClose()">Hủy bỏ</button>
+        <button class="btn-primary" (click)="doAccept()">Chấp nhận</button>
+    </mat-dialog-actions>
+</div>

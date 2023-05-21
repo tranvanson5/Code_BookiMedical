@@ -1,0 +1,36 @@
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Chi nhánh</h5>
+            <h1 class="display-4">Ngồi nhà thứ 2</h1>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered m-0">
+                <thead>
+                    <tr>
+                        <th class="text-center py-3 px-4" style="width: 40px;">STT</th>
+                        <th class="text-center py-3 px-4" style="width: 100px;">Mã chi nhánh</th>
+                        <th class="text-right py-3 px-4" style="width: 120px;">Địa chỉ chi nhánh</th>
+                        <th class="text-right py-3 px-4" style="width: 120px;">Mở của</th>
+                        <th class="text-right py-3 px-4" style="width: 100px;">Đóng của</th>
+                        <th class="text-right py-3 px-4" style="width: 100px;">Hotline</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="departments$ | async as department">
+                    <tr *ngFor="let c of department; let i = index">
+                        <td class="p-4">
+                            {{ i + 1 }}
+                        </td>
+                        <td class="text-right font-weight-semibold align-middle p-4">{{ c.code }}</td>
+                        <td class="text-right font-weight-semibold align-middle p-4">{{ c.address  }}</td>
+                        <td class="text-right font-weight-semibold align-middle p-4">{{ c.openTime }}</td>
+                        <td class="text-right font-weight-semibold align-middle p-4">{{ c.closeTime }}</td>
+                        <td class="text-right font-weight-semibold align-middle p-4">
+                            <a [href]="'tel:'+c.telephone">{{ c.telephone }}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<app-form-wrapper>
+    <div class="form-content">
+        <form [formGroup]="formGroup" id="signup-form" class="signup-form" (submit)="submit()">
+            <h2 class="form-title">Tạo tài khoản</h2>
+            <div class="form-group">
+                <input formControlName="fullName" type="text" class="form-input" placeholder="Họ và tên"/>
+            </div>
+            <div class="form-group">
+                <input formControlName="username" type="text" class="form-input" placeholder="Tên đăng nhập"/>
+            </div>
+            <div class="form-group">
+                <input formControlName="password" type="password" class="form-input" placeholder="Mật khẩu"/>
+            </div>
+            <div class="form-group">
+                <input formControlName="email" type="email" class="form-input" placeholder="Email"/>
+            </div>
+            <div class="form-group">
+                <input formControlName="phone" type="text" class="form-input" placeholder="Số điện thoại"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" id="submit" class="form-submit" value="Đăng ký"/>
+            </div>
+        </form>
+        <p class="loginhere">
+            Đã có tài khoản? <a [routerLink]="['/auth', 'login']" class="loginhere-link">Đăng nhập ngay</a>
+        </p>
+    </div>
+</app-form-wrapper>

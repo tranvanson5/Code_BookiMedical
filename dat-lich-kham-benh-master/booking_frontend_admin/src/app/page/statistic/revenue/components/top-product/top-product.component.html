@@ -1,0 +1,35 @@
+<div>
+    <app-form-search-statistic
+        (statistic)="onChangeYear($event)"
+    ></app-form-search-statistic>
+
+    <div class="w-100 mt-3" style="height: 360px;">
+        <app-bar-chart
+            *ngIf="top10Product$ | async as result"
+            [single]="result"
+        ></app-bar-chart>
+    </div>
+
+    <ag-grid-angular
+        class="ag-theme-alpine"
+        style="height: 500px;"
+        [columnDefs]="columnDef"
+        [rowData]="rowData"
+        [headerHeight]="65"
+        [rowHeight]="56"
+        [tooltipShowDelay]="0"
+
+        (gridSizeChanged)="gridSizeChanged($event)"
+        (gridReady)="onGridReady($event)"
+    ></ag-grid-angular>
+
+    <app-pagination
+        [pageSize]="pagination.pageSize"
+        [dataLength]="pagination.dataLength"
+        [currentPage]="pagination.currentPage"
+        [totalPage]="pagination.totalPage"
+        [totalRecord]="pagination.totalRecord"
+
+        (paginate)="statisticProduct()"
+    ></app-pagination>
+</div>

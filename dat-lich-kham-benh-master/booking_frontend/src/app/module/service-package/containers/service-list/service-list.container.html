@@ -1,0 +1,39 @@
+<ng-container *ngIf="(servicePackage | async) as result; else notFound">
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Services</h5>
+                <h1 class="display-4">{{ title }}</h1>
+            </div>
+            <div class="row g-5">
+                <ng-container *ngFor="let service of result.data">
+                    <div class="col-lg-4 col-md-6">
+                        <app-service-info 
+                            [data]="service"
+                            [shop]="shop"
+                        ></app-service-info>
+                    </div>
+                </ng-container>
+            </div>
+            <app-paging
+                *ngIf="isPaging"
+                [page]="result.page"
+                [pageSize]="result.pageSize"
+                [dataLength]="result.data.length"
+                [total]="result.total"
+
+                (paginate)="paginate.emit($event)"
+            ></app-paging>
+
+            <div class="d-flex justify-content-center w-100 mt-3">
+                <a *ngIf="!isPaging" [routerLink]="['/service']" class="btn btn-primary">
+                    Xem thêm
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #notFound>
+    <h4 class="text-center mt-3">Không có gói dịch vụ.</h4>
+</ng-template>

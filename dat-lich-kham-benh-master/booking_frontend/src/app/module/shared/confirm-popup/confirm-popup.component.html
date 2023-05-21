@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">{{ confirmationData.title }}</h4>
+    <button
+        type="button"
+        class="btn-close"
+        aria-describedby="modal-title"
+        (click)="close()"
+    ></button>
+</div>
+<div class="modal-body">
+    <ng-container
+        *ngIf="confirmationData.withReason"
+        [ngTemplateOutlet]="confirmWithReason"
+    ></ng-container>
+
+    <ng-container
+        *ngIf="!confirmationData.withReason"
+        [ngTemplateOutlet]="inputConfirmNonReason"
+    ></ng-container>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">Hủy bỏ</button>
+    <button type="button" class="btn btn-danger" (click)="accept()">Đồng ý</button>
+</div>
+
+<ng-template #confirmWithReason>
+    <div class="d-flex flex-column gap-2">
+        <label class="required">Lý do</label>
+        <input class="form-control" [(ngModel)]="reason" placeholder="Nhập lý do"/>
+    </div>
+</ng-template>
+
+<ng-template #inputConfirmNonReason>
+    <div [innerHtml]="confirmationData.content | safe:'html'"></div>
+</ng-template>

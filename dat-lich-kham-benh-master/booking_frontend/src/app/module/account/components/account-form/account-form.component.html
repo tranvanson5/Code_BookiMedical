@@ -1,0 +1,67 @@
+<form [formGroup]="formGroup" (submit)="saveProfile()">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-right">Thông tin cá nhân</h4>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <label class="labels required">Họ và tên</label>
+            <input 
+                [class.border-danger]="formControl.fullName.touched && formControl.fullName.invalid"
+                class="form-control" 
+                placeholder="Nhập họ và tên" 
+                formControlName="fullName"
+            >
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <label class="labels required">Giới tính</label>
+            <ng-select formControlName="gender" [clearable]="false" [class.error-validate]="formControl.gender.touched && formControl.gender.invalid">
+                <ng-option [value]="'MALE'">Nam</ng-option>
+                <ng-option [value]="'FEMALE'">Nữ</ng-option>
+            </ng-select>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <label class="labels required">Ngày sinh</label>
+            <input-date formControlName="dob" [isValid]="!(formControl.dob.touched && formControl.dob.invalid)"></input-date>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <label class="labels required">Số điện thoại</label>
+            <input 
+                [class.border-danger]="formControl.phone.touched && formControl.phone.invalid"
+                class="form-control" 
+                placeholder="Nhập số điện thoại" 
+                formControlName="phone"
+            >
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <label class="labels required">Email</label>
+            <input 
+                [class.border-danger]="formControl.email.touched && formControl.email.invalid"
+                class="form-control" 
+                placeholder="Nhập email" 
+                formControlName="email"
+            >
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <label class="labels required">Địa chỉ</label>
+            <input
+                [class.border-danger]="formControl.address.touched && formControl.address.invalid" 
+                class="form-control" 
+                placeholder="Nhập địa chỉ" 
+                formControlName="address"
+            >
+        </div>
+    </div>
+    <div class="mt-5 text-center">
+        <button class="btn btn-primary profile-button">Lưu lại</button>
+    </div>
+</form>

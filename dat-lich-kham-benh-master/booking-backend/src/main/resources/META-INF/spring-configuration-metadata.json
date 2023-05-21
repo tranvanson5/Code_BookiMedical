@@ -1,0 +1,77 @@
+{
+  "groups": [
+    {
+      "name": "spring.jwt",
+      "type": "com.c1se16.security.jwt.JwtConfig",
+      "sourceType": "com.c1se16.security.jwt.JwtConfig"
+    },
+    {
+      "name": "spring.resource",
+      "type": "com.c1se16.resource.ResourceConfig",
+      "sourceType": "com.c1se16.resource.ResourceConfig"
+    },
+    {
+      "name": "paypal",
+      "type": "com.c1se16.paypal.PaypalConfig",
+      "sourceType": "com.c1se16.paypal.PaypalConfig"
+    },
+    {
+      "name": "otp",
+      "type": "com.c1se16.otp.OtpConfig",
+      "sourceType": "com.c1se16.otp.OtpConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.jwt.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.c1se16.security.jwt.JwtConfig"
+    },
+    {
+      "name": "spring.jwt.expire-time",
+      "type": "java.lang.Long",
+      "sourceType": "com.c1se16.security.jwt.JwtConfig"
+    },
+    {
+      "name": "spring.jwt.key-algorithm",
+      "type": "java.lang.String",
+      "sourceType": "com.c1se16.security.jwt.JwtConfig"
+    },
+    {
+      "name": "spring.jwt.key-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.c1se16.security.jwt.JwtConfig"
+    },
+    {
+      "name": "spring.resource.base-path",
+      "type": "java.lang.String",
+      "sourceType": "com.c1se16.resource.ResourceConfig"
+    },
+    {
+      "name": "paypal.client-id",
+      "type": "java.lang.String",
+      "sourceType": "com.c1se16.paypal.PaypalConfig"
+    },
+    {
+      "name": "paypal.client-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.c1se16.paypal.PaypalConfig"
+    },
+    {
+      "name": "paypal.base-url",
+      "type": "java.lang.String",
+      "sourceType": "com.c1se16.paypal.PaypalConfig"
+    },
+    {
+      "name": "otp.length",
+      "type": "java.lang.Integer",
+      "sourceType": "com.c1se16.otp.OtpConfig"
+    },
+    {
+      "name": "otp.expire-time",
+      "type": "java.lang.Integer",
+      "sourceType": "com.c1se16.otp.OtpConfig"
+    }
+  ],
+  "hints": []
+}

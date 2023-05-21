@@ -1,0 +1,17 @@
+<div class="action-shool position-relative">
+    <div class="cursor-pointer"><i class="fa fa-ellipsis-v"></i></div>
+    <ul class="flex-column">
+        <li class="mt-2 btn btn-edit" (click)="onDetail()">
+            Xem chi tiết
+        </li>
+        <li *ngIf="status === 'APPROVED'" class="mt-2 btn btn-done" (click)="onFinish()">
+            Hoàn thành
+        </li>
+        <li *ngIf="status === 'PENDING'" class="mt-2 btn btn-edit" (click)="onApprove()">
+            Phê duyệt
+        </li>
+        <li *ngIf="status === 'PENDING' || status === 'APPROVED'" class="mt-2 btn btn-delete" (click)="onCancel()">
+            Hủy bỏ
+        </li>
+    </ul>
+</div>

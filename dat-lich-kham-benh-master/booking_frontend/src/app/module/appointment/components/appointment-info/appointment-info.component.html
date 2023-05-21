@@ -1,0 +1,33 @@
+<ng-container *ngIf="data">
+    <div [class]="'container-' + data.status" class="position-relative bg-light rounded d-flex flex-column align-items-start justify-content-start p-2 h-100">
+        <span class="label rounded" [class]="data.status"></span>
+        <i class="fas fa-qrcode" (click)="openQrCode()"></i>
+        <h4 class="mb-3 text-truncate w-100" [title]="data.fullName">Họ và tên: {{ data.fullName }}</h4>
+        <p class="m-0">Tuổi: {{ data.age }}</p>
+        <p class="m-0">Số điện thoại: {{ data.phone }}</p>
+        <p class="m-0">Thời gian: {{ data.time | date:'dd/MM/yyyy HH:mm' }}</p>
+        
+        <ng-container *ngIf="data.status === 'CANCEL'">
+            <p *ngIf="data.reasonOfPatient" class="m-0 text-truncate w-100" [title]="data.reasonOfPatient">Lý do của bạn: {{ data.reasonOfPatient }}</p>
+            <p *ngIf="data.reasonOfManager" class="m-0 text-truncate w-100" [title]="data.reasonOfManager">Lý do của quản lý: {{ data.reasonOfManager }}</p>
+            <p lass="m-0">Thời gian hủy: {{ data.cancelDate | date:'dd/MM/yyyy HH:mm' }}</p>
+        </ng-container>
+
+        <ng-container *ngIf="data.status === 'APPROVED'">
+            <p lass="m-0">Thời gian duyệt: {{ data.approvedDate | date:'dd/MM/yyyy HH:mm' }}</p>
+        </ng-container>
+
+        <ng-container *ngIf="data.status === 'DONE'">
+            <p lass="m-0">Hoàn thành: {{ data.doneDate | date:'dd/MM/yyyy HH:mm' }}</p>
+        </ng-container>
+
+        
+        <div class="button-container pt-2 d-flex justify-content-end gap-2 w-100">
+            <button 
+                class="btn btn-danger" 
+                [disabled]="data.status !== 'PENDING'"
+                (click)="cancelAppointment()"    
+            >Hủy bỏ</button>
+        </div>
+    </div>
+</ng-container>

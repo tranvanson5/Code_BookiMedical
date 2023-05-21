@@ -1,0 +1,11 @@
+<div class="action-shool position-relative">
+    <div class="cursor-pointer"><i class="fa fa-ellipsis-v"></i></div>
+    <ul class="flex-column">
+        <li *ngIf="data.status === 1" class="btn btn-delete" (click)="onInActive()">
+            Vô hiệu hóa
+        </li>
+        <li *ngIf="data.status === 0" class="btn btn-edit" (click)="onActive()">
+            Mở khóa
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand navbar-light topbar static-top shadow print z-index-hight bg-gradient-primary">
+    <!-- Sidebar Toggle (Topbar) -->
+    <form class="form-inline">
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+        </button>
+    </form>
+
+    <div class="align-items-center d-none d-md-flex h-100" style="gap: 5px;">
+        <span class="font-weight-bolder text-white" style="font-size: 18px">Quản trị website: <span> Đặt lịch khám bệnh </span> </span>
+    </div>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle"id="userDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <span class="mr-2 d-none d-lg-inline text-white small">Quản trị:</span>
+                <i class="fas fa-user-circle"></i>
+            </a>
+        </li>
+
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link cursor-pointer" (click)="logout()">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Đăng xuất
+            </a>
+        </li>
+    </ul>
+</nav>

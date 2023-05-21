@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup" id="signup-form" class="signup-form" (submit)="ngSubmitForm()">
+    <div class="form-group">
+        <input 
+            class="form-input"
+            placeholder="OTP"
+            formControlName="otp"
+            [class.border-danger]="formControl.otp.touched && formControl.otp.invalid"
+        />
+    </div>
+    <div class="form-group">
+        <input type="submit" name="submit" id="submit" class="form-submit" value="Xác nhận" />
+    </div>
+</form>

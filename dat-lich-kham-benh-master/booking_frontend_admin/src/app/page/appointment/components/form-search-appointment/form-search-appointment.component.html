@@ -1,0 +1,45 @@
+<form [formGroup]="formGroup" (submit)="submit()" class="d-flex">
+    <div class="col-md-10 d-flex">
+        <div class="col-md-3">
+            <label>Tên người dùng</label>
+            <input placeholder="Nhập tên người dùng" formControlName="fullName" class="form-control" />
+        </div>
+    
+        <div class="col-md-3">
+            <label>Trạng thái</label>
+            <ng-select 
+                [items]="_status" 
+                placeholder="Chọn trạng thái" 
+                bindValue="code" 
+                bindLabel="name" 
+                formControlName="status"
+            ></ng-select>
+        </div>
+    
+        <div class="col-md-3">
+            <label>Ngày hẹn</label>
+            <input 
+                placeholder="Nhập Ngày hẹn" 
+                formControlName="time" 
+                class="form-control" 
+                type="date"
+            />
+        </div>
+    
+        <div class="col-md-3">
+            <label>Chi nhánh</label>
+            <ng-select 
+                [items]="department$ | async" 
+                [multiple]="true"
+                [clearable]="isAdmin"
+                [searchable]="true"
+                placeholder="Chọn chi nhánh" 
+                bindValue="code" 
+                bindLabel="address" 
+                formControlName="departmentIds"
+            ></ng-select>
+        </div>
+    </div>
+
+    <button class="btn-primary align-self-end">Tìm kiếm</button>
+</form>

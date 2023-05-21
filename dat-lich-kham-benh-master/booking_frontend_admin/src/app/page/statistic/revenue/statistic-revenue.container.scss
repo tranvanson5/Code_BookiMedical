@@ -1,0 +1,46 @@
+@import '../../../../colors';
+
+:host ::ng-deep {
+
+    .ag-pinned-right-header .ag-header-row:nth-child(2),
+    .ag-pinned-left-header .ag-header-row:nth-child(2) {
+        height: 100% !important;
+        top: 0 !important;
+    }
+
+    .merge-row {
+        top: 0px;
+        height: 100%;
+        position: fixed;
+    }
+
+    .row-group {
+        background-color: $bg-header-group;
+
+        .ag-header-cell-label {
+            justify-content: center;
+        }
+    }
+
+    .ag-header-cell {
+        border-top: none !important;
+    }
+
+    .ag-header-group-cell {
+        background-color: $bg-header-group;
+        border-bottom: 1px solid $border-group-row !important;
+
+        .ag-header-group-cell-label {
+            display: flex;
+            justify-content: center;
+
+            .ag-header-group-text {
+                font-size: 10px;
+                letter-spacing: .06em;
+                text-transform: uppercase;
+                color: $color-header-grid !important;
+                font-family: Inter !important;
+            }
+        }
+    }
+}

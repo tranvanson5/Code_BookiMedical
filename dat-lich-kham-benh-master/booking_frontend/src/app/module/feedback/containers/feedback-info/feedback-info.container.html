@@ -1,0 +1,19 @@
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Testimonial</h5>
+            <h1 class="display-4">Patients Say About Our Services</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <owl-carousel-o [options]="config">
+                    <ng-container *ngFor="let fb of feedbacks">
+                        <ng-template carouselSlide>
+                            <app-feedback-info [data]="fb"></app-feedback-info>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+:host ::ng-deep {
+    .owl-nav {
+
+        position: absolute;
+        padding: 0 45px;
+        width: 100%;
+        height: 45px;
+        top: calc(50% - 22.5px);
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+
+        .owl-prev,
+        .owl-next {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff !important;
+            background: var(--primary) !important;
+            border-radius: 45px;
+            font-size: 22px !important;
+            transition: 0.5s;
+    
+            &:hover {
+                background: var(--dark) !important;
+            }
+        }
+    }
+}

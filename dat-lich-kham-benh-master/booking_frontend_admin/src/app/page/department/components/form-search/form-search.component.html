@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup" (submit)="submit()" class="d-flex">
+
+    <div class="col-md-4">
+        <label>Trạng thái</label>
+        <ng-select
+            [items]="status"
+            bindLabel="label"
+            bindValue="id"
+            formControlName="status"
+            placeholder="Chọn trạng thái"
+        ></ng-select>
+    </div>
+
+    <div class="col-md-4">
+        <label>Địa chỉ</label>
+        <input formControlName="address" class="form-control" placeholder="Nhập mã hoặc địa chỉ"/>
+    </div>
+
+    <div class="align-self-end">
+        <button class="btn btn-primary">Tìm kiếm</button>
+    </div>
+
+</form>

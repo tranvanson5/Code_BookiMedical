@@ -1,0 +1,8 @@
+<mat-expansion-panel [expanded]="defaultCollapse" (opened)="open.emit()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h5 class="mb-0">{{ header }}</h5>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <ng-content></ng-content>
+</mat-expansion-panel>

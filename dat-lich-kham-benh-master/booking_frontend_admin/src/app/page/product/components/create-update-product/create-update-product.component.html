@@ -1,0 +1,118 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title class="mb-0" *ngIf="!data">Thêm mới sản phẩm</h2>
+        <h2 mat-dialog-title class="mb-0" *ngIf="data">Cập nhật sản phẩm</h2>
+        <span mat-dialog-close class="font-size-30">&times;</span>
+    </div>
+    <form [formGroup]="formGroup" (submit)="submit()">
+        <mat-dialog-content class="d-flex flex-column gap-20">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="code" class="required">Mã sản phẩm</label>
+                    <input id="code" formControlName="code" class="form-control" placeholder="Nhập mã sản phẩm" />
+                    <div *ngIf="(getControl.code.dirty || getControl.code.touched) && getControl.code.invalid">
+                        <div *ngIf="getControl.code.errors.required" class="error-validate">
+                            Mã sản phẩm không được trống!
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <label class="required">Tên sản phẩm</label>
+                    <input id="name" formControlName="name" class="form-control" placeholder="Nhập tên sản phẩm"/>
+                    <div *ngIf="(getControl.name.dirty || getControl.name.touched) && getControl.name.invalid">
+                        <div *ngIf="getControl.name.errors.required" class="error-validate">
+                            Tên sản phẩm không được trống!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+               
+                <div class="col-md-6">
+                    <label class="required">Giá sản phẩm</label>
+                    <input id="price" formControlName="price" class="form-control" placeholder="Nhập giá sản phẩm" type="number" />
+                    <div *ngIf="(getControl.price.dirty || getControl.price.touched) && getControl.price.invalid">
+                        <div *ngIf="getControl.price.errors.required" class="error-validate">
+                            Giá sản phẩm không được trống!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="required">Trạng thái</label>
+                    <ng-select
+                        [items]="status"
+                        [clearable]="false"
+                        [searchable]="false"
+                        bindLabel="label"
+                        bindValue="id"
+                        placeholder="Chọn trạng thái"
+                        formControlName="status"
+                    ></ng-select>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="required">Mô tả ngắn</label>
+                    <textarea 
+                        class="form-control" 
+                        formControlName="shortDescription" 
+                        maxlength="255"
+                        rows="3"
+                        style="height: unset !important"
+                    ></textarea>
+                    <div *ngIf="(getControl.shortDescription.dirty || getControl.shortDescription.touched) && getControl.shortDescription.invalid">
+                        <div *ngIf="getControl.shortDescription.errors.required" class="error-validate">
+                            Mô tả ngắn không được trống!
+                        </div>
+                        <div *ngIf="getControl.shortDescription.errors.max" class="error-validate">
+                            Mô tả ngắn phải nhỏ hơn 255 ký tự
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="required">Mô tả:</label>
+                <ckeditor [editor]="_editor" formControlName="fullDescription"></ckeditor>
+                <div *ngIf="(getControl.fullDescription.dirty || getControl.fullDescription.touched) && getControl.fullDescription.invalid">
+                    <div *ngIf="getControl.fullDescription.errors.required" class="error-validate">
+                        Mô tả không được trống!
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label>Hình ảnh</label>
+                <div class="d-flex">
+                    <div class="mr-4">
+                        <label for="image" class="button-upload-image cursor-pointer"></label>
+                        <input preview-image [image]="image" (output)="file = $event" id="image" class="d-none"/>
+                    </div>
+                    <div class="image-container">
+                        <img 
+                            #image 
+                            width="150" 
+                            height="100" 
+                            style="display: none;" 
+                            [src]="data?.avatar | resource | safe:'resourceUrl'" 
+                            [class.d-block]="data?.avatar"
+                            alt=""
+                        />
+                    </div>
+                </div>
+            </div>
+
+
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+            <button mat-button mat-dialog-close class="btn-close mr-2">Hủy bỏ</button>
+            <button mat-button class="btn-primary">Lưu lại</button>
+          </mat-dialog-actions>
+    </form>
+</div>

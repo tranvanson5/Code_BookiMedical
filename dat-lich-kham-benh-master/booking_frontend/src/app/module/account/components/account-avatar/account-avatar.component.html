@@ -1,0 +1,14 @@
+<div class="d-flex flex-column align-items-center text-center">
+    <img
+        #avatarElement
+        class="rounded-circle" 
+        width="150px" 
+        [src]="avatar | resource | safe:'resourceUrl'"
+        [alt]="fullName"
+    >
+    <label for="file" class="text-primary my-2 cursor-pointer">Tải ảnh</label>
+    <input preview-image [imageElement]="avatarElement" id="file" (uploaded)="uploaded($event)" />
+    <span class="font-weight-bold">{{ fullName }}</span>
+    <span class="text-black-50">{{ email }}</span>
+    <button class="btn btn-primary mt-2" (click)="openChangePassword()">Đổi mật khẩu</button>
+</div>

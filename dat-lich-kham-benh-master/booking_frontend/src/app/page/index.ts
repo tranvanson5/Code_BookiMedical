@@ -1,0 +1,12 @@
+export { ForgotPasswordPage } from './forgot-password/forgot-password.page';
+export { SignInPage } from './sign-in/sign-in.page';
+export { MyBillPage } from './my-bill/my-bill.page';
+export { MyProductPage } from './my-product/my-product.page';
+export { SignupPage } from './sign-up/sign-up.page';
+export { HomePage } from './home/home.page';
+export { AboutPage } from './about/about.page';
+export { ServicePage } from './service-package/service.page';
+export { ContactPage} from './contact/contact.page';
+export { MyAppointmentPage } from './my-appointment/my-appointment.page';
+export { ProfilePage } from './profile/profile.page';
+export { CartPage } from './cart/cart.page';

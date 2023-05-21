@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup" (submit)="doSearch()" class="d-flex">
+    <div class="col-md-4">
+        <label>Đơn hàng</label>
+        <input placeholder="Nhập mã đơn hàng hoặc tên người mua" formControlName="idOrName" class="form-control"/>
+    </div>
+
+    <div class="col-md-4">
+        <label>Ngày mua</label>
+        <input type="date" formControlName="createdDate" class="form-control" />
+    </div>
+
+    <button class="btn-primary align-self-end">Tìm kiếm</button>
+</form>

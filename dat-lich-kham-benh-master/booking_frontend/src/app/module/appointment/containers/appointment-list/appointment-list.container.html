@@ -1,0 +1,26 @@
+<ng-container *ngIf="(appointments | async) as result; else notFound">
+    <div>
+        <app-appointment-status></app-appointment-status>
+        <div class="row g-4 mt-2">
+            <div class="col-lg-4 col-md-6" *ngFor="let a of result.data">
+                <app-appointment-info
+                    [data]="a"
+                    (reload)="paginate(page)"
+                ></app-appointment-info>
+            </div>
+        </div>
+        <app-paging
+            [page]="result.page"
+            [pageSize]="result.pageSize"
+            [dataLength]="result.data.length"
+            [total]="result.total"
+
+            (paginate)="paginate($event)"
+        ></app-paging>
+    </div>
+</ng-container>
+<ng-template #notFound>
+    <tr>
+        <td colspan="10">Không có kết quả.</td>
+    </tr>
+</ng-template>

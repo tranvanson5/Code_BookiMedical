@@ -1,0 +1,31 @@
+<div>
+    <div class="title-container">
+        <span class="title">DANH SÁCH DƠN ĐẶT LỊCH</span>
+    </div>
+    <div class="body-container">
+        <app-form-search-appointment
+            (search)="doSearch($event, 1)"
+        ></app-form-search-appointment>
+        
+        <ag-grid-angular
+            style="height: 500px;"
+            class="mt-4 ag-theme-alpine"
+            [headerHeight]="56"
+            [rowHeight]="56"
+            [rowData]="rowData"
+            [columnDefs]="columnDef"
+            [tooltipShowDelay]="0"
+            [context]="this"
+
+            (gridSizeChanged)="gridSizeChanged($event)"
+        ></ag-grid-angular>
+
+        <app-pagination
+            [currentPage]="pagination.currentPage"
+            [dataLength]="pagination.dataLength"
+            [totalPage]="pagination.totalPage"
+            [totalRecord]="pagination.totalRecord"
+            (paginate)="doSearch(null, $event)"
+        ></app-pagination>
+    </div>
+</div>

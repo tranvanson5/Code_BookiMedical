@@ -1,0 +1,27 @@
+<form class="row my-3" [formGroup]="formGroup">
+	<div class="col-md-3" >
+		<label>Năm</label>
+		<ng-select
+			[items]="[2020,2021,2022,2023,2024,2025,2026,2027]"
+			placeholder="Chọn năm"
+			formControlName="year"
+			[searchable]="false"
+			[clearable]="false"
+			(change)="search.emit(this.formGroup.value)"
+		></ng-select>
+	</div>
+
+	<div class="col-md-3" >
+		<label>Chi nhánh</label>
+		<ng-select
+			[items]="department$ | async"
+			placeholder="Chi nhánh"
+			formControlName="departmentId"
+			bindLabel="address"
+			bindValue="code"
+			[searchable]="true"
+			[clearable]="isAdmin"
+			(change)="search.emit(this.formGroup.value)"
+		></ng-select>
+	</div>
+</form>

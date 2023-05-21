@@ -1,0 +1,39 @@
+<div>
+    <div class="modal-header">
+        <h4>Hóa đơn chi tiết</h4>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered m-0">
+            <thead>
+                <tr>
+                    <th class="text-center py-3 px-4" style="width: 200px;">Hình ảnh</th>
+                    <th class="text-center py-3 px-4" style="width: 150px;">Tên sản phẩm</th>
+                    <th class="text-right py-3 px-4" style="width: 100px;">Giá</th>
+                    <th class="text-right py-3 px-4" style="width: 100px;">Số lượng</th>
+                    <th class="text-right py-3 px-4" style="width: 100px;">Tổng tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of details">
+                    <td class="p-4">
+                        <div class="d-flex justify-content-center">
+                            <img 
+                                [src]="c.product.avatar | resource | safe:'resourceUrl'"
+                                [alt]="c.product.name"
+                                style="width: 200px; height: 100px;"
+                                class="d-block ui-w-40 ui-bordered"
+                            >
+                        </div>
+                    </td>
+                    <td class="text-right font-weight-semibold align-middle p-4">{{ c.product.name }}</td>
+                    <td class="text-right font-weight-semibold align-middle p-4">{{ c.price | currency:'VND' }}</td>
+                    <td class="text-right font-weight-semibold align-middle p-4">{{ c.quantity }}</td>
+                    <td class="text-right font-weight-semibold align-middle p-4">{{ (c.quantity * c.product.price) | currency:'VND' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="close()">Đóng</button>
+    </div>
+</div>

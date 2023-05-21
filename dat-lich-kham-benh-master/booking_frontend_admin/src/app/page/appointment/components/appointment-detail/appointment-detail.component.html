@@ -1,0 +1,73 @@
+<div *ngIf="data">
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title>Chi tiết buổi hẹn</h2>
+        <span class="time-close" (click)="doClose()">&times;</span>
+    </div>
+    <mat-dialog-content>
+        <table class="w-100">
+            <tbody>
+                <tr>
+                    <td>Mã</td>
+                    <td>{{ data.id }}</td>
+                </tr>
+                <tr>
+                    <td>Họ tên</td>
+                    <td>{{ data.fullName }}</td>
+                </tr>
+                <tr>
+                    <td>Tuổi</td>
+                    <td>{{ data.age }}</td>
+                </tr>
+                <tr>
+                    <td>SĐT</td>
+                    <td>{{ data.phone }}</td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td>{{ data.address }}</td>
+                </tr>
+                <tr *ngIf="status as s">
+                    <td>Trạng thái</td>
+                    <td [style.color]="s.color">
+                        {{ s.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Chuyên khoa</td>
+                    <td>{{ data.specialistName }}</td>
+                </tr>
+                <ng-container *ngIf="data.status === 'CANCEL'">
+                    <tr *ngIf="data.reasonOfPatient">
+                        <td>Người dùng hủy</td>
+                        <td>{{ data.reasonOfPatient }}</td>
+                    </tr>
+                    <tr *ngIf="data.reasonOfManager">
+                        <td>Quản lý hủy</td>
+                        <td>{{ data.reasonOfPatient }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày hủy</td>
+                        <td>{{ data.cancelDate }}</td>
+                    </tr>
+                </ng-container>
+
+                <ng-container *ngIf="data.status === 'APPROVED'">
+                    <tr>
+                        <td>Ngày duyệt</td>
+                        <td>{{ data.approvedDate }}</td>
+                    </tr>
+                </ng-container>
+
+                <ng-container *ngIf="data.status === 'DONE'">
+                    <tr>
+                        <td>Ngày hoàn thành</td>
+                        <td>{{ data.doneDate }}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button class="btn-close mr-2" (click)="doClose()">Hủy bỏ</button>
+    </mat-dialog-actions>
+</div>

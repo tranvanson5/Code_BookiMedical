@@ -1,0 +1,75 @@
+<div>
+    <div class="title-container">
+        <span class="title">THỐNG KÊ TÀI KHOẢN</span>
+    </div>
+
+    <div *ngIf="overall$ | async as overall" class="d-flex mt-3">
+        <div class="col-md-6 d-flex ps-0">
+            <div class="col-md-6 ps-0">
+                <div class="ps-3 overall-block text-primary rounded d-flex flex-column align-items-start justify-content-center">
+                    <i class="fas fa-users"></i>
+                    <span>Tổng tài khoản</span>
+                    <h3>{{ overall.total }}</h3>
+                </div>
+            </div>
+    
+            <div class="col-md-6 pe-0">
+                <div class="ps-3 overall-block text-success rounded d-flex flex-column align-items-start justify-content-center">
+                    <i class="fas fa-users"></i>
+                    <span>Tài khoản hoạt động</span>
+                    <h3>{{ overall.active }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 d-flex pe-0">
+            <div class="col-md-6 ps-0">
+                <div class="ps-3 overall-block text-danger rounded d-flex flex-column align-items-start justify-content-center">
+                    <i class="fas fa-users-slash"></i>
+                    <span>Tài khoản không hoạt động</span>
+                    <h3>{{ overall.inactive }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-form-search-statistic
+        (search)="getChart($event)"
+    ></app-form-search-statistic>
+
+    <div *ngIf="status$ | async as status" class="d-flex my-3" style="height: 360px;">
+        <div class="col-md-6 ps-0">
+            <div class="rounded h-100 w-100 border">
+                <h5 class="p-2">Mở tài khoản</h5>
+                <app-bar-chart
+                    [single]="status[0]"
+                    [xLabel]="'Tháng'"
+                    [showXLabel]="true"
+                ></app-bar-chart>
+            </div>
+        </div>
+        <div class="col-md-6 pe-0">
+            <div class="rounded h-100 w-100 border">
+                <h5 class="p-2">Khóa tài khoản</h5>
+                <app-bar-chart
+                    [single]="status[1]"
+                    [xLabel]="'Tháng'"
+                    [showXLabel]="true"
+                ></app-bar-chart>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column gap-2">
+        <h4 class="mb-0">Thống kê chi tiết</h4>
+        <div>
+            <input #input class="form-control col-md-3" placeholder="Nhập username" (keyup.enter)="getHis(null, input.value)" />
+        </div>
+        <app-user-grid
+            *ngIf="his$ | async as his"
+            [result]="his"
+            (paginate)="getHis($event)"
+        ></app-user-grid>
+    </div>
+    
+</div>

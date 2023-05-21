@@ -1,0 +1,35 @@
+<div class="input-group position-relative">
+    <input
+        class="form-control"
+        placeholder="dd/MM/yyyy HH:mm"
+        [readOnly]="true"
+        (blur)="blurInput()"
+        [value]="inputValue"
+        [class.border-danger]="!isValid"
+    />
+    <button 
+        class="btn btn-outline-secondary bi bi-calendar3"
+        type="button"
+        [class.border-danger]="!isValid"
+        (click)="datepickerToggle()"
+    ></button>
+    
+    <div *ngIf="isOpenDatePopup" class="datepicker-container">
+        <ngb-datepicker
+            #dp
+            (dateSelect)="ngOnChangeDate($event)"
+            [minDate]="{year: 1900, month: 1, day: 1}"
+            [footerTemplate]="timerContainer"
+        ></ngb-datepicker>
+    </div>
+</div>
+
+<ng-template #timerContainer>
+    <div class="py-3 px-2">
+        <ngb-timepicker
+            [spinners]="false"
+            [meridian]="true"
+            [(ngModel)]="time"
+        ></ngb-timepicker>
+    </div>
+</ng-template>

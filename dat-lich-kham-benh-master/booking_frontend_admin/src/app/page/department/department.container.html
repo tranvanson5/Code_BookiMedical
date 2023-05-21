@@ -1,0 +1,33 @@
+<div>
+    <div class="title-container">
+        <span class="title">DANH SÁCH CHI NHÁNH</span>
+        <app-button-create (click)="openDepartment()"></app-button-create>
+    </div>
+    <div class="body-container">
+        <app-form-search
+            (search)="doSearch($event)"
+        ></app-form-search>
+        
+        <ag-grid-angular
+            style="height: 500px;"
+            class="mt-4 ag-theme-alpine"
+            [headerHeight]="56"
+            [rowHeight]="56"
+            [rowData]="rowData"
+            [columnDefs]="columnDefs"
+            [tooltipShowDelay]="0"
+            [context]="this"
+
+            (gridSizeChanged)="gridSizeChanged($event)"
+            (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+
+        <app-pagination
+            [currentPage]="pagination.currentPage"
+            [dataLength]="pagination.dataLength"
+            [totalPage]="pagination.totalPage"
+            [totalRecord]="pagination.totalRecord"
+            (paginate)="doSearch(null, $event)"
+        ></app-pagination>
+    </div>
+</div>

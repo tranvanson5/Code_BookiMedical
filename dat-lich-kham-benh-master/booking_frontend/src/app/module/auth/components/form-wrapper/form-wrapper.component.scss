@@ -1,0 +1,39 @@
+:host {
+    .main {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #222;
+        font-weight: 400;
+        padding: 0;
+        font-family: "Montserrat";
+    }
+    
+    .bg-image {
+        background-color: black;
+        background-image: url(/assets/img/login.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .bg-image:after {
+        content: "";
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        opacity: 0.6;
+    }
+    
+    .container {
+        width: 660px;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+}

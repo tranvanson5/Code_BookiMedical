@@ -1,0 +1,26 @@
+:host ::ng-deep {
+    .owl-dots {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .owl-dot {
+        position: relative;
+        display: inline-block;
+        margin: 0 5px;
+        width: 20px;
+        height: 20px;
+        background: var(--light);
+        border: 2px solid var(--primary);
+        border-radius: 20px;
+        transition: 0.5s;
+    }
+
+    .owl-dot.active {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+    }
+}

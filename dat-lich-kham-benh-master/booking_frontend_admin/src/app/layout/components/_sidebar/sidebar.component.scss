@@ -1,0 +1,23 @@
+@import '../../../../colors.scss';
+
+.h-0 {
+    height: 0 !important;
+}
+
+.animation {
+    transition: all .5s
+}
+
+.nav-item {
+    background: $primary;
+}
+
+.arrow-expanded {
+    transform: rotateZ(90deg);
+}
+
+a.active i,
+a.active {
+    font-weight: 700;
+    color: #fff;
+}

@@ -1,0 +1,17 @@
+<div *ngIf="data" class="testimonial-item text-center">
+    <div class="position-relative mb-5">
+        <img 
+            class="img-fluid rounded-circle mx-auto" 
+            [src]="data.creator.avatar" 
+            [alt]="data.creator.fullName"
+        >
+        <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+            style="width: 60px; height: 60px;">
+            <i class="fa fa-quote-left fa-2x text-primary"></i>
+        </div>
+    </div>
+    <p class="fs-4 fw-normal">{{ data.content }}</p>
+    <hr class="w-25 mx-auto">
+    <h3>Patient Name</h3>
+    <h6 class="fw-normal text-primary mb-3">{{ data.creator.fullName }}</h6>
+</div>

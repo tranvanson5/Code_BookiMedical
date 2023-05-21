@@ -1,0 +1,91 @@
+<div class="bg-white text-center rounded p-5">
+    <h1 class="mb-4">Đặt lịch hẹn</h1>
+    <form [formGroup]="formGroup" (submit)="ngOnSubmitForm()">
+        <div class="row g-3">
+            <div class="col-12 col-sm-6">
+                <ng-select
+    
+                    [placeholder]="'Chọn chi nhánh'"
+                    [items]="departmentList$ | async"
+                    [searchable]="true"
+                    [clearable]="false"
+    
+                    bindLabel="address"
+                    bindValue="code"
+                    formControlName="departmentId"
+                ></ng-select>
+            </div>
+            <div class="col-12 col-sm-6">
+                <ng-select
+                    [placeholder]="'Chọn chuyên khoa'"
+                    [items]="specialist$ | async"
+                    [searchable]="true"
+                    [clearable]="true"
+    
+                    bindLabel="name"
+                    bindValue="id"
+                    formControlName="specialistId"
+                ></ng-select>
+            </div>
+            <div class="col-12 col-sm-6">
+                <input 
+                    class="form-control"
+                    placeholder="họ và tên"
+                    formControlName="fullName"
+    
+                    [class.border-danger]="formControl.fullName.touched && formControl.fullName.invalid"
+                >
+            </div>
+            <div class="col-12 col-sm-6">
+                <input 
+                    class="form-control" 
+                    placeholder="Số điện thoại"
+                    formControlName="phone"
+    
+                    [class.border-danger]="formControl.phone.touched && formControl.phone.invalid"
+                >
+            </div>
+            <div class="col-12 col-sm-6">
+                <input 
+                    class="form-control" 
+                    placeholder="Địa chỉ"
+                    formControlName="address"
+    
+                    [class.border-danger]="formControl.address.touched && formControl.address.invalid"
+                >
+            </div>
+            <div class="col-12 col-sm-6">
+                <input 
+                    class="form-control" 
+                    placeholder="Tuổi"
+                    formControlName="age"
+                    type="number"
+    
+                    [class.border-danger]="formControl.age.touched && formControl.age.invalid"
+                >
+            </div>
+            <div class="col-12 col-sm-6">
+                <ng-select formControlName="gender" [clearable]="false">
+                    <ng-option value="MALE" >Nam</ng-option>
+                    <ng-option value="FEMALE">Nữ</ng-option>
+                </ng-select>
+            </div>
+            <div class="col-12 col-sm-6">
+                <input-datetime
+                    formControlName="time"
+                    [isValid]="!(formControl.time.touched && formControl.time.invalid)"
+                ></input-datetime>
+            </div>
+            <div class="col-12">
+                <textarea 
+                    class="form-control" 
+                    placeholder="Mô tả"
+                    formControlName="description"
+                ></textarea>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">Đặt lịch hẹn</button>
+            </div>
+        </div>
+    </form>
+</div>

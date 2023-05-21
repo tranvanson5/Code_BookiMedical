@@ -1,0 +1,15 @@
+.datepicker-container {
+    position: absolute !important;
+    background: white;
+    top: 40px;
+    border: 1px solid #ced4da;
+}
+
+button {
+    border-color: #ced4da;
+
+    &:focus {
+        border-color: #ced4da;
+        box-shadow: none;
+    }
+}

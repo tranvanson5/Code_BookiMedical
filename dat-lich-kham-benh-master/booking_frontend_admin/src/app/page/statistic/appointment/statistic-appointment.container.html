@@ -1,0 +1,90 @@
+<div>
+    <div class="title-container">
+        <span class="title">THỐNG KÊ LỊCH HẸN</span>
+    </div>
+
+    <div *ngIf="overall$ | async as overall" class="d-flex mt-3">
+        <div class="col-md-6 d-flex ps-0">
+            <div class="col-md-6 ps-0">
+                <div class="ps-3 overall-block text-warning rounded d-flex flex-column align-items-start justify-content-center">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Chờ duyệt</span>
+                    <h3>{{ overall.pending }}</h3>
+                </div>
+            </div>
+    
+            <div class="col-md-6 pe-0">
+                <div class="ps-3 overall-block text-primary rounded d-flex flex-column align-items-start justify-content-center">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Đã duyệt</span>
+                    <h3>{{ overall.approved }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 d-flex pe-0">
+            <div class="col-md-6 ps-0">
+                <div class="ps-3 overall-block text-danger rounded d-flex flex-column align-items-start justify-content-center">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Đã hủy</span>
+                    <h3>{{ overall.cancel }}</h3>
+                </div>
+            </div>
+
+            <div class="col-md-6 pe-0">
+                <div class="ps-3 overall-block text-success rounded d-flex flex-column align-items-start justify-content-center">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Hoàn thành</span>
+                    <h3>{{ overall.done }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-form-search-statistic
+        (search)="getChart($event)"
+    ></app-form-search-statistic>
+
+    <div *ngIf="status$ | async as status" class="d-flex flex-wrap my-3" style="height: 360px; row-gap: 20px;">
+        <div class="col-md-6 ps-0 w-100 h-100">
+            <div class="rounded h-100 w-100 border">
+                <h5 class="p-2">Chờ duyệt</h5>
+                <app-bar-chart
+                    [single]="status[0]"
+                    [xLabel]="'Tháng'"
+                    [showXLabel]="true"
+                ></app-bar-chart>
+            </div>
+        </div>
+        <div class="col-md-6 pe-0 w-100 h-100">
+            <div class="rounded h-100 w-100 border">
+                <h5 class="p-2">Đã duyệt</h5>
+                <app-bar-chart
+                    [single]="status[1]"
+                    [xLabel]="'Tháng'"
+                    [showXLabel]="true"
+                ></app-bar-chart>
+            </div>
+        </div>
+        <div class="col-md-6 ps-0 w-100 h-100">
+            <div class="rounded h-100 w-100 border">
+                <h5 class="p-2">Hủy bỏ</h5>
+                <app-bar-chart
+                    [single]="status[2]"
+                    [xLabel]="'Tháng'"
+                    [showXLabel]="true"
+                ></app-bar-chart>
+            </div>
+        </div>
+        <div class="col-md-6 pe-0 w-100 h-100">
+            <div class="rounded h-100 w-100 border">
+                <h5 class="p-2">Hoàn thành</h5>
+                <app-bar-chart
+                    [single]="status[3]"
+                    [xLabel]="'Tháng'"
+                    [showXLabel]="true"
+                ></app-bar-chart>
+            </div>
+        </div>
+    </div>
+</div>

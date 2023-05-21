@@ -1,0 +1,131 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title class="mb-0">Thêm mới quản lý</h2>
+        <span mat-dialog-close class="font-size-30">&times;</span>
+    </div>
+    <form [formGroup]="formGroup" (submit)="submit()">
+        <mat-dialog-content class="d-flex flex-column gap-20">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="username" class="required">Tên đăng nhập</label>
+                    <input id="username" formControlName="username" class="form-control" placeholder="Nhập Tên đăng nhập" />
+                    <div *ngIf="(getControl.username.dirty || getControl.username.touched) && getControl.username.invalid">
+                        <div *ngIf="getControl.username.errors.required" class="error-validate">
+                            Tên đăng nhập không được trống!
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="password" class="required">Mật khẩu</label>
+                    <input id="password" formControlName="password" class="form-control" placeholder="Nhập mật khẩu" type="password"/>
+                    <div *ngIf="(getControl.password.dirty || getControl.password.touched) && getControl.password.invalid">
+                        <div *ngIf="getControl.password.errors.required" class="error-validate">
+                            Mật khẩu không được trống!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="fullName" class="required">Họ và tên</label>
+                    <input id="fullName" formControlName="fullName" class="form-control" placeholder="Nhập Họ và tên"/>
+                    <div *ngIf="(getControl.fullName.dirty || getControl.fullName.touched) && getControl.fullName.invalid">
+                        <div *ngIf="getControl.fullName.errors.required" class="error-validate">
+                            Họ và tên không được trống!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="authority" class="required">Chọn quyền</label>
+                    <ng-select formControlName="authority">
+                        <ng-option value="ADMIN">Toàn quyền</ng-option>
+                        <ng-option value="MANAGER">Quản lý chi nhánh</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="row">
+               
+                <div class="col-md-6">
+                    <label for="phone" class="required">SĐT</label>
+                    <input id="phone" formControlName="phone" class="form-control" placeholder="Nhập sđt" type="tel"/>
+                    <div *ngIf="(getControl.phone.dirty || getControl.phone.touched) && getControl.phone.invalid">
+                        <div *ngIf="getControl.phone.errors.required" class="error-validate">
+                            SĐT không được trống!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="required">Giới tính</label>
+                    <ng-select formControlName="gender">
+                        <ng-option value="MALE">Nam</ng-option>
+                        <ng-option value="MALE">Nữ</ng-option>
+                    </ng-select>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="email" class="required">Email</label>
+                    <input id="email" formControlName="email" class="form-control" placeholder="Nhập email" type="email"/>
+                    <div *ngIf="(getControl.email.dirty || getControl.email.touched) && getControl.email.invalid">
+                        <div *ngIf="getControl.email.errors.required" class="error-validate">
+                            Email không được trống!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="dob" class="required">Ngày sinh:</label>
+                    <input id="dob" formControlName="dob" class="form-control" type="date"/>
+                    <div *ngIf="(getControl.dob.dirty || getControl.dob.touched) && getControl.dob.invalid">
+                        <div *ngIf="getControl.dob.errors.required" class="error-validate">
+                            Ngày sinh không được trống!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="address" class="required">Địa chỉ</label>
+                    <textarea id="address" formControlName="address" class="form-control" placeholder="Nhập địa chỉ"></textarea>
+                    <div *ngIf="(getControl.address.dirty || getControl.address.touched) && getControl.address.invalid">
+                        <div *ngIf="getControl.address.errors.required" class="error-validate">
+                            Địa chỉ không được trống!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label>Hình ảnh</label>
+                <div class="d-flex">
+                    <div class="mr-4">
+                        <label for="image" class="button-upload-image cursor-pointer"></label>
+                        <input preview-image [image]="image" (output)="file = $event" id="image" class="d-none"/>
+                    </div>
+                    <div class="image-container">
+                        <img 
+                            #image 
+                            width="150" 
+                            height="100" 
+                            style="display: none;" 
+                            alt=""
+                        />
+                    </div>
+                </div>
+            </div>
+
+
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+            <button mat-button mat-dialog-close class="btn-close mr-2">Hủy bỏ</button>
+            <button class="btn-primary" type="submit">Lưu lại</button>
+          </mat-dialog-actions>
+    </form>
+</div>

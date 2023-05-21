@@ -1,0 +1,14 @@
+<div #containerRef class="w-100 h-100">
+	<ngx-charts-bar-vertical
+		[view]="[containerRef.offsetWidth, containerRef.offsetHeight - 60]"
+		[scheme]="colorScheme"
+		[results]="single"
+		[gradient]="gradient"
+		[xAxis]="showXAxis"
+		[yAxis]="showYAxis"
+		[legend]="showLegend"
+		[showXAxisLabel]="showXLabel"
+		[showYAxisLabel]="showYAxisLabel"
+		[xAxisLabel]="xLabel"
+	></ngx-charts-bar-vertical>
+</div>
